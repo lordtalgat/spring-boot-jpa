@@ -1,4 +1,4 @@
-package talgat.home.ems_spring_hibernate.entity;
+package talgat.home.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

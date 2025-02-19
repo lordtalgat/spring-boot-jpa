@@ -1,7 +1,7 @@
-package talgat.home.ems_spring_hibernate.mapper;
+package talgat.home.mapper;
 
-import talgat.home.ems_spring_hibernate.dto.EmployeeDto;
-import talgat.home.ems_spring_hibernate.entity.Employee;
+import talgat.home.dto.EmployeeDto;
+import talgat.home.entity.Employee;
 
 public class EmployeeMapper {
 

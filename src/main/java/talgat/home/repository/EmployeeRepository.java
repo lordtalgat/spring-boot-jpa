@@ -1,7 +1,7 @@
-package talgat.home.ems_spring_hibernate.repository;
+package talgat.home.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import talgat.home.ems_spring_hibernate.entity.Employee;
+import talgat.home.entity.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 }

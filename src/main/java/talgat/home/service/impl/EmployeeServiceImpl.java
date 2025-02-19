@@ -1,13 +1,13 @@
-package talgat.home.ems_spring_hibernate.service.impl;
+package talgat.home.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import talgat.home.ems_spring_hibernate.dto.EmployeeDto;
-import talgat.home.ems_spring_hibernate.entity.Employee;
-import talgat.home.ems_spring_hibernate.exception.ResourceNotFoundException;
-import talgat.home.ems_spring_hibernate.mapper.EmployeeMapper;
-import talgat.home.ems_spring_hibernate.repository.EmployeeRepository;
-import talgat.home.ems_spring_hibernate.service.EmployeeService;
+import talgat.home.dto.EmployeeDto;
+import talgat.home.entity.Employee;
+import talgat.home.exception.ResourceNotFoundException;
+import talgat.home.mapper.EmployeeMapper;
+import talgat.home.repository.EmployeeRepository;
+import talgat.home.service.EmployeeService;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package talgat.home.ems_spring_hibernate.service;
+package talgat.home.service;
 
-import talgat.home.ems_spring_hibernate.dto.EmployeeDto;
+import talgat.home.dto.EmployeeDto;
 
 import java.util.List;
 

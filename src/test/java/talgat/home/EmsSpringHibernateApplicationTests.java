@@ -1,4 +1,4 @@
-package talgat.home.ems_spring_hibernate;
+package talgat.home;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

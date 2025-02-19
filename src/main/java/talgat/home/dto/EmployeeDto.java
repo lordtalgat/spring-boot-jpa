@@ -1,4 +1,4 @@
-package talgat.home.ems_spring_hibernate.dto;
+package talgat.home.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

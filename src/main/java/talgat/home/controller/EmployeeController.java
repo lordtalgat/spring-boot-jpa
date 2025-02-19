@@ -1,11 +1,11 @@
-package talgat.home.ems_spring_hibernate.controller;
+package talgat.home.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import talgat.home.ems_spring_hibernate.dto.EmployeeDto;
-import talgat.home.ems_spring_hibernate.service.EmployeeService;
+import talgat.home.dto.EmployeeDto;
+import talgat.home.service.EmployeeService;
 
 import java.util.List;
 

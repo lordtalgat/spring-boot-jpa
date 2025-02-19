@@ -1,4 +1,4 @@
-package talgat.home.ems_spring_hibernate.exception;
+package talgat.home.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
