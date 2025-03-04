@@ -53,6 +53,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(id);
     }
 
+    @Override
+    public List<EmployeeDto> findByEmail(String email) {
+        return employeeRepository.findByEmailContainingIgnoreCase(email).stream()
+                .map(x -> EmployeeMapper.mapToEmployeeDto(x))
+                .toList();
+    }
+
     private Employee findEmployee(Long id) {
         return employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not Found : " + id));
