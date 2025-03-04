@@ -21,7 +21,4 @@ public class Person {
 
     @Column(name = "avatar_url", nullable = false, unique = true)
     private String avatarUrl;
-
-    @OneToOne(mappedBy = "person")
-    private Employee employee;
 }

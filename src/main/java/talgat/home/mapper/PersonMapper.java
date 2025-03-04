@@ -16,8 +16,7 @@ public class PersonMapper {
         return new Person(
                 personDto.getId(),
                 personDto.getAddress(),
-                personDto.getAvatarUrl(),
-                null
+                personDto.getAvatarUrl()
         );
     }
 }

@@ -26,8 +26,4 @@ public class Employee {
     @NotBlank(message = "please fill email")
     @Column(name = "email_id", nullable = false, unique = true)
     private String email;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person person;
 }

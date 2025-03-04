@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import talgat.home.dto.EmployeeDto;
+import talgat.home.entity.Employee;
 import talgat.home.service.EmployeeService;
 
 import java.util.List;
@@ -23,6 +24,12 @@ public class EmployeeController {
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
 
+    @RequestMapping("/filterByEmail")
+    @GetMapping("{email}")
+    public ResponseEntity<List<EmployeeDto>> filterByEmail(@RequestParam("email") String email) {
+        return ResponseEntity.ok(employeeService.findByEmail(email));
+    }
+
     @GetMapping
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
@@ -32,11 +39,6 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("id") long id) {
         EmployeeDto employeeDto = employeeService.getEmployee(id);
         return ResponseEntity.ok(employeeDto);
-    }
-
-    @GetMapping("/filterByEmail?email={email}")
-    public ResponseEntity<List<EmployeeDto>> filterByEmail(@RequestParam("email") String email) {
-        return ResponseEntity.ok(employeeService.findByEmail(email));
     }
 
     @PutMapping("{id}")
