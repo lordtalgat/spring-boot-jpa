@@ -39,19 +39,20 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public PersonDto updatePerson(Long id, PersonDto personDto) {
         Person person = findPerson(id);
-        person.setAddress(personDto.getAddress());
-        person.setAvatarUrl(personDto.getAvatarUrl());
+        person.setAddress(personDto.address());
+        person.setAvatarUrl(personDto.avatarUrl());
         Person personSaved = personRepository.save(person);
         return PersonMapper.mapToPersonDto(personSaved);
     }
 
     @Override
     public void deletePerson(Long id) {
+        findPerson(id);
         personRepository.deleteById(id);
     }
 
     private Person findPerson(Long id) {
         return personRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not Found : " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Person not Found : " + id));
     }
 }

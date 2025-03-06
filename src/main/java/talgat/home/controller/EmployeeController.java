@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import talgat.home.dto.EmployeeDto;
-import talgat.home.entity.Employee;
 import talgat.home.service.EmployeeService;
 
 import java.util.List;

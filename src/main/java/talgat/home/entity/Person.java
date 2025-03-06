@@ -1,5 +1,6 @@
 package talgat.home.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,4 +22,9 @@ public class Person {
 
     @Column(name = "avatar_url", nullable = false, unique = true)
     private String avatarUrl;
+
+    @OneToOne
+    @JoinColumn(name="employee_id")
+    @JsonBackReference
+    private Employee employee;
 }

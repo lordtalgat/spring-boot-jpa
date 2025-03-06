@@ -1,5 +1,8 @@
 package talgat.home.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -26,4 +29,13 @@ public class Employee {
     @NotBlank(message = "please fill email")
     @Column(name = "email_id", nullable = false, unique = true)
     private String email;
+
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Person person;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "company_id")
+    private Company company;
 }

@@ -1,6 +1,7 @@
 package talgat.home.mapper;
 
 import talgat.home.dto.PersonDto;
+import talgat.home.entity.Employee;
 import talgat.home.entity.Person;
 
 public class PersonMapper {
@@ -8,15 +9,19 @@ public class PersonMapper {
         return new PersonDto(
                 person.getId(),
                 person.getAddress(),
-                person.getAvatarUrl()
+                person.getAvatarUrl(),
+                person.getEmployee().getId()
         );
     }
 
     public static Person mapToPerson(PersonDto personDto) {
-        return new Person(
-                personDto.getId(),
-                personDto.getAddress(),
-                personDto.getAvatarUrl()
-        );
+        Person person = new Person();
+        person.setId(personDto.id());
+        person.setAddress(personDto.address());
+        person.setAvatarUrl(personDto.avatarUrl());
+        Employee employee = new Employee();
+        employee.setId(personDto.employeeId());
+        person.setEmployee(employee);
+        return person;
     }
 }

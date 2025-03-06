@@ -5,7 +5,7 @@ import talgat.home.dto.PersonDto;
 import java.util.List;
 
 public interface PersonService {
-    PersonDto createPerson(PersonDto employeeDto);
+    PersonDto createPerson(PersonDto personDto);
 
     PersonDto getPerson(Long id);
 
