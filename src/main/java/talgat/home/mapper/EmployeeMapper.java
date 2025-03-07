@@ -7,6 +7,9 @@ import talgat.home.entity.Employee;
 public class EmployeeMapper {
 
     public static EmployeeDto mapToEmployeeDto(Employee employee) {
+        if (employee == null) {
+            throw new NullPointerException("Employee is null");
+        }
         return new EmployeeDto(
                 employee.getId(),
                 employee.getFirstName(),
@@ -17,6 +20,9 @@ public class EmployeeMapper {
     }
 
     public static Employee mapToEmployee(EmployeeDto employeeDto) {
+        if (employeeDto == null) {
+            throw new NullPointerException("Employee Dto is null");
+        }
         Employee employee = new Employee();
         employee.setId(employeeDto.id());
         employee.setFirstName(employeeDto.firstName());
