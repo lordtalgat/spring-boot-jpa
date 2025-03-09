@@ -35,7 +35,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    public void shouldSuccessfullySaveEmployee() {
+    public void shouldSuccessfullySaveEmployeeOrUpdate() {
         EmployeeDto dto = new EmployeeDto(0L, "John", "Doe", "john@mail.com", 1);
         Employee employee = new Employee(0L, "John", "Doe", "john@mail.com", new Person(), new Company(1, "", null));
         when(employeeRepository.save(any(Employee.class))).thenReturn(employee);
