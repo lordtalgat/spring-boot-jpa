@@ -55,13 +55,10 @@ class EmployeeServiceTest {
         Employee employee2 = new Employee(2L, "John1", "Doe2", "john2@mail.com", new Person(), new Company(1, "", null));
         Employee employee3 = new Employee(2L, "John1", "Doe2", "john2@mail.com", new Person(), new Company(1, "", null));
 
-        List<Employee> employees = new ArrayList<>();
-        employees.add(employee1);
-        employees.add(employee2);
-        employees.add(employee3);
+        var employees = List.of(employee1, employee2, employee3);
 
         when(employeeRepository.findAll()).thenReturn(employees);
-        List<EmployeeDto> dtos = employeeService.getAllEmployees();
+        var dtos = employeeService.getAllEmployees();
         assertEquals(3, dtos.size());
         assertEquals(employee1.getId(), dtos.get(0).id());
         assertEquals(employee2.getLastName(), dtos.get(1).lastName());
@@ -87,11 +84,10 @@ class EmployeeServiceTest {
     void shouldSuccessfullyFindByEmail() {
         String email = "john@mail.com";
         Employee employee = new Employee(1L, "John", "Doe", "john@mail.com", new Person(), new Company(1, "", null));
-        List<Employee> employees = new ArrayList<>();
-        employees.add(employee);
+        var employees = List.of(employee);
         when(employeeRepository.findByEmailContainingIgnoreCase(email)).thenReturn(employees);
 
-        List<EmployeeDto> dtos = employeeService.findByEmail(email);
+        var dtos = employeeService.findByEmail(email);
         assertEquals(1, dtos.size());
         assertEquals(employee.getFirstName(), dtos.get(0).firstName());
         assertEquals(employee.getLastName(), dtos.get(0).lastName());
