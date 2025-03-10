@@ -33,7 +33,7 @@ class CompanyServiceTest {
     @Test
     void shouldSuccessfullyGetCompany() {
         Integer companyId = 1;
-        Company company = new Company(1, "Apple", null);
+        var company = new Company(1, "Apple", null);
         when(companyRepository.findById(companyId.longValue())).thenReturn(Optional.of(company));
 
         CompanyDto dto = companyService.getCompany(companyId);
@@ -48,13 +48,10 @@ class CompanyServiceTest {
         Company company2 = new Company(1, "IBM", null);
         Company company3 = new Company(1, "TSMC", null);
 
-        List<Company> companies = new ArrayList<>();
-        companies.add(company1);
-        companies.add(company2);
-        companies.add(company3);
+        var companies = List.of(company1, company2, company3);
         when(companyRepository.findAll()).thenReturn(companies);
 
-        List<CompanyDto> listDto = companyService.getCompanies();
+        var listDto = companyService.getCompanies();
         assertEquals(listDto.size(), companies.size());
         assertEquals(listDto.get(0).id(), company1.getId());
         assertEquals(listDto.get(0).name(), company1.getName());

@@ -58,7 +58,7 @@ class PersonServiceTest {
         persons.add(new Person(employee1.getId(), "Dostyk 3, Almaty, KZ", "https://egov.kz/img1.jpg", employee1));
         persons.add(new Person(employee2.getId(), "Dostyk 4, Almaty, KZ", "https://egov.kz/img2.jpg", employee2));
         when(personRepository.findAll()).thenReturn(persons);
-        List<PersonDto> dtos = personService.getAllPersons();
+        var dtos = personService.getAllPersons();
         assertNotNull(dtos);
         assertEquals(persons.size(), dtos.size());
         assertEquals(persons.get(0).getId(), dtos.get(0).id());

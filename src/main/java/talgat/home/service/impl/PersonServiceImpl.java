@@ -32,7 +32,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<PersonDto> getAllPersons() {
-        List<Person> persons = personRepository.findAll();
+        var persons = personRepository.findAll();
         return persons.stream().map(x -> PersonMapper.mapToPersonDto(x)).toList();
     }
 
