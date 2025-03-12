@@ -1,6 +1,8 @@
 package talgat.home.service.impl;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import talgat.home.dto.PersonDto;
 import talgat.home.entity.Person;
@@ -15,12 +17,15 @@ import java.util.List;
 @AllArgsConstructor
 public class PersonServiceImpl implements PersonService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(PersonServiceImpl.class);
+
     private PersonRepository personRepository;
 
     @Override
     public PersonDto createPerson(PersonDto personDto) {
         Person person = PersonMapper.mapToPerson(personDto);
         Person personSaved = personRepository.save(person);
+        LOGGER.info("Person saved: {}", personSaved);
         return PersonMapper.mapToPersonDto(personSaved);
     }
 
@@ -42,6 +47,7 @@ public class PersonServiceImpl implements PersonService {
         person.setAddress(personDto.address());
         person.setAvatarUrl(personDto.avatarUrl());
         Person personSaved = personRepository.save(person);
+        LOGGER.info("Person updated: {}", personSaved);
         return PersonMapper.mapToPersonDto(personSaved);
     }
 
@@ -49,6 +55,7 @@ public class PersonServiceImpl implements PersonService {
     public void deletePerson(Long id) {
         findPerson(id);
         personRepository.deleteById(id);
+        LOGGER.info("Person deleted: {}", id);
     }
 
     private Person findPerson(Long id) {

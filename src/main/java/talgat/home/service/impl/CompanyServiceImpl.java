@@ -1,6 +1,8 @@
 package talgat.home.service.impl;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import talgat.home.dto.CompanyDto;
 import talgat.home.entity.Company;
@@ -15,12 +17,15 @@ import java.util.List;
 @AllArgsConstructor
 public class CompanyServiceImpl implements CompanyService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CompanyServiceImpl.class);
+
     private CompanyRepository companyRepository;
 
     @Override
     public CompanyDto createCompany(CompanyDto companyDto) {
         Company company = CompanyMapper.toCompany(companyDto);
         Company companySaved = companyRepository.save(company);
+        LOGGER.info("Company saved: {}", companySaved);
         return CompanyMapper.toCompanyDto(companySaved);
     }
 
@@ -29,6 +34,7 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = findCompany(id.longValue());
         company.setName(companyDto.name());
         Company companySaved = companyRepository.save(company);
+        LOGGER.info("Company updated: {}", companySaved);
         return CompanyMapper.toCompanyDto(companySaved);
     }
 
@@ -46,6 +52,7 @@ public class CompanyServiceImpl implements CompanyService {
     public void deleteCompany(Integer id) {
         findCompany(id.longValue());
         companyRepository.deleteById(id.longValue());
+        LOGGER.info("Company deleted: {}", id);
     }
 
     private Company findCompany(Long id) {

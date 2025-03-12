@@ -1,6 +1,8 @@
 package talgat.home.service.impl;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import talgat.home.dto.EmployeeDto;
 import talgat.home.entity.Employee;
@@ -15,12 +17,15 @@ import java.util.List;
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
+
     private EmployeeRepository employeeRepository;
 
     @Override
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
         Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
         Employee savedEmployee = employeeRepository.save(employee);
+        LOGGER.info("Employee saved: {}", savedEmployee);
         return EmployeeMapper.mapToEmployeeDto(savedEmployee);
     }
 
@@ -43,6 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setLastName(employeeDto.lastName());
         employee.setEmail(employeeDto.email());
         Employee updatedEmployee = employeeRepository.save(employee);
+        LOGGER.info("Employee updated: {}", updatedEmployee);
 
         return EmployeeMapper.mapToEmployeeDto(updatedEmployee);
     }
@@ -51,6 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployee(Long id) {
         findEmployee(id);
         employeeRepository.deleteById(id);
+        LOGGER.info("Employee deleted: {}", id);
     }
 
     @Override
