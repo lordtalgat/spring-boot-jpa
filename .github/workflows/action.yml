@@ -32,7 +32,7 @@ jobs:
 #          distribution: 'temurin'
 #          cache: maven
       - name: Debug file structure
-        run: ls -l /home/runner/work/spring-boot-jpa/spring-boot-jpa/
+        run: ls -l /home/runner/work/spring-boot-jpa/spring-boot-jpa/src/main/resources/
 #      - name: Build with Maven
 #        run: mvn --batch-mode -DskipTests -q package
 #      - name: Test
