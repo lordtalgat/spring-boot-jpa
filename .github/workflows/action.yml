@@ -24,7 +24,7 @@ jobs:
           mysql user: 'ems' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
           mysql password: '12345678' # Required if "mysql user" exists. The password for the "mysql user"
       - name: Check My SQL
-        run: mysql -u root -h localhost -P 3307 ems -p
+        run: mysql -u root -h localhost -P 3307 ems -p 12345678
 #      - name: Set up JDK 17
 #        uses: actions/setup-java@v4
 #        with:
