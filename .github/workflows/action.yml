@@ -31,6 +31,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Debug file structure
+        run: |
+          ls -R src/test/resources
+          pwd
       - name: Build with Maven
         run: mvn --batch-mode -DskipTests -q package
       - name: Test
