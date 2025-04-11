@@ -34,7 +34,7 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode -DskipTests package
       - name: Test
-        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true --spring.config.location=application.properties test
 #      - name: Report
 #        uses: dorny/test-reporter@v1
 #        if: always()
