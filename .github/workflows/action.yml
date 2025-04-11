@@ -12,31 +12,29 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-#      - uses: mirromutth/mysql-action@v1.1
-#        with:
-#          host port: 3306 # Optional, default value is 3306. The port of host
-#          container port: 3307 # Optional, default value is 3306. The port of container
-#          character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
-#          collation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
-#          mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
-#          mysql database: 'ems' # Optional, default value is "test". The specified database which will be create
-#          mysql root password: '12345678' # Required if "mysql user" is empty, default is empty. The root superuser password
-#          mysql user: 'ems' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
-#          mysql password: '12345678' # Required if "mysql user" exists. The password for the "mysql user"
-#      - name: Check My SQL
-#        run: mysql -u root -h localhost -P 3307 ems -p 12345678 --version
-#      - name: Set up JDK 17
-#        uses: actions/setup-java@v4
-#        with:
-#          java-version: '17'
-#          distribution: 'temurin'
-#          cache: maven
-      - name: Debug file structure
-        run: ls -l /home/runner/work/spring-boot-jpa/spring-boot-jpa/src/main/resources/
-#      - name: Build with Maven
-#        run: mvn --batch-mode -DskipTests -q package
-#      - name: Test
-#        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+      - uses: mirromutth/mysql-action@v1.1
+        with:
+          host port: 3306 # Optional, default value is 3306. The port of host
+          container port: 3307 # Optional, default value is 3306. The port of container
+          character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
+          collation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
+          mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
+          mysql database: 'ems' # Optional, default value is "test". The specified database which will be create
+          mysql root password: '12345678' # Required if "mysql user" is empty, default is empty. The root superuser password
+          mysql user: 'ems' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
+          mysql password: '12345678' # Required if "mysql user" exists. The password for the "mysql user"
+      - name: Check My SQL
+        run: mysql -u root -h localhost -P 3307 ems -p 12345678 --version
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn --batch-mode -DskipTests -q package
+      - name: Test
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 #      - name: Report
 #        uses: dorny/test-reporter@v1
 #        if: always()
