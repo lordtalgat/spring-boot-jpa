@@ -1,12 +1,14 @@
 package talgat.home.mapper;
 
 import org.junit.jupiter.api.*;
+import org.springframework.boot.test.context.SpringBootTest;
 import talgat.home.dto.EmployeeDto;
 import talgat.home.entity.Company;
 import talgat.home.entity.Employee;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class EmployeeMapperTest {
 
     @Test
