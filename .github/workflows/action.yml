@@ -1,0 +1,32 @@
+# This workflow will build a Java project with Maven, and then test it
+name: Java CI with Maven and Test
+
+on:
+  push:
+    branches:
+    - main
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn --batch-mode -DskipTests package
+      - name: Test
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+      - name: Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Maven Tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+          fail-on-error: true
