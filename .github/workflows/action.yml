@@ -32,9 +32,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        run: mvn --batch-mode -DskipTests package
+        run: mvn --batch-mode -DskipTests -q package
       - name: Test
-        run: mvn --batch-mode -Dmaven.test.failure.ignore=true --spring.config.location=application.properties test
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 #      - name: Report
 #        uses: dorny/test-reporter@v1
 #        if: always()
