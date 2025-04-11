@@ -23,16 +23,16 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class EmployeeServiceTest {
 
-    @InjectMocks
-    private EmployeeService employeeService;
-
     @Mock
     private EmployeeRepository employeeRepository;
 
+    @InjectMocks
+    private EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository);
+
     @BeforeEach
     void setUp() {
-        employeeService = new EmployeeServiceImpl(employeeRepository);
         MockitoAnnotations.openMocks(this);
+        employeeService = new EmployeeServiceImpl(employeeRepository);
     }
 
     @Test
