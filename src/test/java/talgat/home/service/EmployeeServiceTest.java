@@ -6,6 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 import talgat.home.dto.EmployeeDto;
 import talgat.home.entity.Company;
 import talgat.home.entity.Employee;
@@ -13,13 +14,13 @@ import talgat.home.entity.Person;
 import talgat.home.repository.EmployeeRepository;
 import talgat.home.service.impl.EmployeeServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+@SpringBootTest
 class EmployeeServiceTest {
 
     @InjectMocks
